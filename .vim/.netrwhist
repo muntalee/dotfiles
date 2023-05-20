@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/Users/munta/.tmux'
+let g:netrw_dirhist_3='/Users/munta/.config/yabai'
+let g:netrw_dirhist_2='/Users/munta/Documents/latex/testdocument'
+let g:netrw_dirhist_1='/Users/munta/.config/spotify-tui'
+let g:netrw_dirhist_0='/Users/munta/Developer/chatgpt-survey'
+let g:netrw_dirhist_9='/Users/munta/.vim/bundle/vim-polyglot'
+let g:netrw_dirhist_8='/Users/munta/.vim'
+let g:netrw_dirhist_7='/Users/munta/Library/CloudStorage/GoogleDrive-md.m.islam@torontomu.ca/My Drive/Winter 2023/CPS310/arc-simulator/labs'
+let g:netrw_dirhist_6='/Users/munta/.PenTablet'
+let g:netrw_dirhist_5='/Users/munta'
