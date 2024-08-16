@@ -1,0 +1,10 @@
+[
+    {
+        "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+        "bindings": {
+            "tab": "pane::ActivateNextItem",
+            "shift-tab": "pane::ActivatePrevItem",
+            "ctrl-t": "workspace::ToggleTerminalFocus"
+        }
+    }
+]

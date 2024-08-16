@@ -1,0 +1,157 @@
+{
+  "schemes" : [
+    {
+      "if" : {
+        "device" : {
+          "vendorID" : "0x3151",
+          "productID" : "0x3020",
+          "productName" : "Wireless Device",
+          "category" : "mouse"
+        }
+      },
+      "pointer" : {
+        "speed" : 0.3942,
+        "acceleration" : 0
+      },
+      "scrolling" : {
+        "acceleration" : 1,
+        "speed" : 0,
+        "reverse" : true,
+        "distance" : "auto"
+      }
+    },
+    {
+      "pointer" : {
+        "disableAcceleration" : false,
+        "speed" : 0.5713,
+        "acceleration" : 0
+      },
+      "if" : {
+        "device" : {
+          "productID" : "0xc52f",
+          "productName" : "USB Receiver",
+          "vendorID" : "0x46d",
+          "category" : "mouse"
+        }
+      },
+      "scrolling" : {
+        "reverse" : true,
+        "acceleration" : {
+          "horizontal" : 1,
+          "vertical" : 0.86
+        }
+      }
+    },
+    {
+      "pointer" : {
+        "acceleration" : 0.5,
+        "disableAcceleration" : true,
+        "speed" : 0.25
+      },
+      "if" : {
+        "device" : {
+          "productName" : "G203 LIGHTSYNC Gaming Mouse",
+          "vendorID" : "0x46d",
+          "category" : "mouse",
+          "serialNumber" : "205C396E5642",
+          "productID" : "0xc092"
+        }
+      },
+      "buttons" : {
+        "universalBackForward" : false,
+        "clickDebouncing" : {
+          "timeout" : 0
+        }
+      },
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 0.47
+        },
+        "speed" : {
+          "vertical" : 6.54
+        },
+        "reverse" : {
+          "vertical" : true
+        }
+      }
+    },
+    {
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1
+        }
+      },
+      "if" : {
+        "device" : {
+          "productName" : "Apple Internal Keyboard \/ Trackpad",
+          "category" : "trackpad",
+          "vendorID" : "0x5ac",
+          "productID" : "0x281"
+        }
+      }
+    },
+    {
+      "if" : {
+        "device" : {
+          "category" : "mouse",
+          "productName" : "Wireless Receiver",
+          "productID" : "0xc542",
+          "vendorID" : "0x46d"
+        }
+      },
+      "pointer" : {
+        "acceleration" : 0,
+        "speed" : 0.2514
+      }
+    },
+    {
+      "if" : {
+        "device" : {
+          "productID" : "0xc547",
+          "productName" : "USB Receiver",
+          "category" : "mouse",
+          "vendorID" : "0x46d"
+        }
+      },
+      "pointer" : {
+        "acceleration" : 0,
+        "speed" : 0.1726
+      }
+    },
+    {
+      "if" : {
+        "device" : {
+          "vendorID" : "0x10c4",
+          "category" : "mouse",
+          "productID" : "0x8108",
+          "productName" : "USB OPTICAL MOUSE"
+        }
+      },
+      "pointer" : {
+        "acceleration" : 0.4,
+        "disableAcceleration" : true
+      }
+    },
+    {
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        }
+      },
+      "pointer" : {
+        "acceleration" : 0.5,
+        "disableAcceleration" : true
+      },
+      "if" : {
+        "device" : {
+          "productID" : "0xb03a",
+          "serialNumber" : "5E2CD2A1",
+          "vendorID" : "0x46d",
+          "category" : "mouse",
+          "productName" : "LOGI M240"
+        }
+      }
+    }
+  ],
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.9.5"
+}

@@ -1,0 +1,9 @@
+set scroll-step 0.5
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set page-padding 1
+set selection-clipboard clipboard
+map K zoom in
+map J zoom out
+map i recolor
+map p print

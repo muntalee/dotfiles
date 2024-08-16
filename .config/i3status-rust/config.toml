@@ -1,0 +1,44 @@
+theme = "semi-native"
+icons = "awesome"
+
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "used"
+format = "{icon} {used}/{total} ({available} free)"
+alert_absolute = true
+unit = "GB"
+alert = 190
+warning = 200
+
+[[block]]
+block = "memory"
+format_mem = "{mem_used}/{mem_total}({mem_used_percents})"
+format_swap = "{swap_used}/{swap_total}({swap_used_percents})"
+display_type = "memory"
+icons = true
+clickable = true
+interval = 5
+warning_mem = 80
+warning_swap = 80
+critical_mem = 95
+critical_swap = 95
+
+[[block]]
+block = "cpu"
+
+[[block]]
+block = "load"
+interval = 5
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "battery"
+
+[[block]]
+block = "time"
+interval = 5
+format = "%a %d/%m %I:%M %p"
+# format = "%Y-%m-%d %I:%M:%S %p"
