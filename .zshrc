@@ -1,7 +1,4 @@
 source ~/.zshenv
-
-ZSH_THEME=robbyrussell
-
 DISABLE_AUTO_TITLE="true"
 
 plugins=(
@@ -12,6 +9,9 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# for prompt
+eval "$(starship init zsh)"
 
 #
 # ALIASES
@@ -48,8 +48,6 @@ alias idle='ipython3'
 
 alias nano='/opt/homebrew/bin/nano'
 
-alias nvchad='NVIM_APPNAME=nvchad nvim'
-
 alias tmudrive='cd ~/md.m.islam@torontomu.ca\ -\ Google\ Drive'
 alias obsidian_drive='cd ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/main/'
 alias tmu='ssh moon.cs.ryerson.ca'
@@ -70,6 +68,11 @@ alias portacle='/Applications/Portacle/mac/bin/portacle'
 
 alias arm="env /usr/bin/arch -arm64 /bin/zsh --login"
 alias intel="env /usr/bin/arch -x86_64 /bin/zsh --login"
+
+function appid() {
+    osascript -e "id of app \"$1\""
+}
+
 
 # NVM setup
 export NVM_DIR="$HOME/.nvm"
@@ -109,4 +112,4 @@ function ghcup_init () {
 
 export PATH=$PATH:/usr/local/sbin
 
-neofetch
+pfetch

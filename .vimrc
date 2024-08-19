@@ -47,6 +47,14 @@ nmap <silent> <leader>w :bw<CR>
 nnoremap <silent> <Tab> :bnext<CR>
 nnoremap <silent> <S-Tab> :bprevious<CR>
 
+imap "<tab> ""<Left>
+imap '<tab> ''<Left>
+imap (<tab> ()<Left>
+imap [<tab> []<Left>
+imap {<tab> {}<Left>
+imap {<CR> {<CR>}<ESC>O
+imap {;<CR> {<CR>};<ESC>O
+
 " enable/disable line numbers
 nmap <C-n> :set nu!<CR>
 
@@ -63,9 +71,9 @@ set guioptions=
 set guifont=UbuntuMono\ Nerd\ Font:h18
 
 " coloring
-colorscheme wildcharm
-hi Normal guibg=NONE ctermbg=NONE
+colorscheme habamax
 set termguicolors
+hi Normal guibg=NONE ctermbg=NONE
 
 " highlights extra space
 highlight ExtraWhitespace ctermbg=red guibg=red
