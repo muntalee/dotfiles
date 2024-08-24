@@ -1,5 +1,8 @@
+eval "$(zoxide init zsh)"
+
 export GEM_HOME="$HOME/Programs/gems"
 
+export PATH="$PATH:/usr/local/sbin"
 export PATH="$PATH:/usr/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:\
 /Library/Frameworks/Python.framework/Versions/3.11/bin:\
 /usr/local/texlive/2022basic/bin/universal-darwin:\
@@ -47,7 +50,6 @@ export DYLD_LIBRARY_PATH="/opt/homebrew/Cellar/glew/2.2.0_1/lib:$DYLD_LIBRARY_PA
 export DYLD_LIBRARY_PATH="/opt/homebrew/Cellar/glfw/3.3.9/lib:$DYLD_LIBRARY_PATH"
 export DYLD_LIBRARY_PATH="/opt/homebrew/Cellar/glm/1.0.0/lib:$DYLD_LIBRARY_PATH"
 
-
 export PATH="/opt/homebrew/sbin:$PATH"
 export CPATH="/opt/homebrew/include:$CPATH"
 export LIBRARY_PATH="/opt/homebrew/lib:$LIBRARY_PATH"
@@ -65,5 +67,3 @@ export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 
 export VCPKG_ROOT="/Users/munta/dev/github/vcpkg"
 export PATH=$VCPKG_ROOT:$PATH
-
-eval "$(zoxide init zsh)"

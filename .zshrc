@@ -1,16 +1,7 @@
+### BEGIN CONFIG
+
 source ~/.zshenv
-DISABLE_AUTO_TITLE="true"
-
-plugins=(
-    git
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    autojump
-)
-
-source $ZSH/oh-my-zsh.sh
-
-# for prompt
+source ~/.zinitrc
 eval "$(starship init zsh)"
 
 #
@@ -42,7 +33,7 @@ alias imgcat='wezterm imgcat'
 alias cat="bat"
 
 alias gvim='neovide'
-alias ls='eza'
+alias ls='eza -a'
 alias ll='eza -alh'
 alias idle='ipython3'
 
@@ -73,7 +64,6 @@ function appid() {
     osascript -e "id of app \"$1\""
 }
 
-
 # NVM setup
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -96,20 +86,8 @@ function conda_init () {
     # <<< conda initialize <<<
 }
 
-function b() {
-    if [ -z "$1" ] || [ "$1" = "--help" ]; then
-        printf "%s\n" "Usage: b integer"
-        return 0
-    fi
-    m1ddc set luminance $1 > /dev/null
-}
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 function ghcup_init () {
     [ -f "/Users/munta/.ghcup/env" ] && source "/Users/munta/.ghcup/env" # ghcup-env
 }
 
-export PATH=$PATH:/usr/local/sbin
-
-pfetch
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
