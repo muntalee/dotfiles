@@ -7,12 +7,33 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-    "theme": "Gruvbox Dark Hard",
+    "features": {
+        "inline_completion_provider": "none"
+    },
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false
+    },
+
+    "theme": "Rosé Pine",
     "vim_mode": true,
     "ui_font_size": 14,
     "buffer_font_size": 14,
     "tab_size": 4,
-    "format_on_save": "off",
+
+    // formatter
+    "languages": {
+        "C++": {
+            "formatter": {
+                "external": {
+                    "command": "astyle",
+                    "arguments": ["--style=allman", "--indent=spaces=4"]
+                }
+            },
+            "format_on_save": "on"
+        }
+    },
+
     "cursor_blink": false,
     "relative_line_numbers": true,
     "scrollbar": { "show": "never" },

@@ -1,5 +1,3 @@
-eval "$(zoxide init zsh)"
-
 export GEM_HOME="$HOME/Programs/gems"
 
 export PATH="$PATH:/usr/local/sbin"

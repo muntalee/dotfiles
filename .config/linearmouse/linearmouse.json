@@ -1,86 +1,110 @@
 {
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0",
   "schemes" : [
     {
       "if" : {
         "device" : {
-          "vendorID" : "0x3151",
-          "productID" : "0x3020",
           "productName" : "Wireless Device",
-          "category" : "mouse"
-        }
-      },
-      "pointer" : {
-        "speed" : 0.3942,
-        "acceleration" : 0
-      },
-      "scrolling" : {
-        "acceleration" : 1,
-        "speed" : 0,
-        "reverse" : true,
-        "distance" : "auto"
-      }
-    },
-    {
-      "pointer" : {
-        "disableAcceleration" : false,
-        "speed" : 0.5713,
-        "acceleration" : 0
-      },
-      "if" : {
-        "device" : {
-          "productID" : "0xc52f",
-          "productName" : "USB Receiver",
-          "vendorID" : "0x46d",
-          "category" : "mouse"
-        }
-      },
-      "scrolling" : {
-        "reverse" : true,
-        "acceleration" : {
-          "horizontal" : 1,
-          "vertical" : 0.86
-        }
-      }
-    },
-    {
-      "pointer" : {
-        "acceleration" : 0.5,
-        "disableAcceleration" : true,
-        "speed" : 0.25
-      },
-      "if" : {
-        "device" : {
-          "productName" : "G203 LIGHTSYNC Gaming Mouse",
-          "vendorID" : "0x46d",
           "category" : "mouse",
-          "serialNumber" : "205C396E5642",
-          "productID" : "0xc092"
+          "productID" : "0x3020",
+          "vendorID" : "0x3151"
         }
       },
-      "buttons" : {
-        "universalBackForward" : false,
-        "clickDebouncing" : {
-          "timeout" : 0
-        }
+      "pointer" : {
+        "acceleration" : 0,
+        "speed" : 0.3942
       },
       "scrolling" : {
+        "distance" : "auto",
+        "reverse" : true,
+        "acceleration" : 1,
+        "speed" : 0
+      }
+    },
+    {
+      "scrolling" : {
+        "reverse" : true,
         "acceleration" : {
-          "vertical" : 0.47
-        },
+          "vertical" : 0.86,
+          "horizontal" : 1
+        }
+      },
+      "pointer" : {
+        "acceleration" : 0,
+        "speed" : 0.5713,
+        "disableAcceleration" : false
+      },
+      "if" : {
+        "device" : {
+          "productName" : "USB Receiver",
+          "category" : "mouse",
+          "vendorID" : "0x46d",
+          "productID" : "0xc52f"
+        }
+      }
+    },
+    {
+      "scrolling" : {
         "speed" : {
           "vertical" : 6.54
         },
         "reverse" : {
           "vertical" : true
+        },
+        "acceleration" : {
+          "vertical" : 0.47
         }
+      },
+      "if" : {
+        "device" : {
+          "productID" : "0xc092",
+          "productName" : "G203 LIGHTSYNC Gaming Mouse",
+          "vendorID" : "0x46d",
+          "category" : "mouse",
+          "serialNumber" : "205C396E5642"
+        }
+      },
+      "buttons" : {
+        "clickDebouncing" : {
+          "timeout" : 0
+        },
+        "mappings" : [
+          {
+            "command" : false,
+            "shift" : false,
+            "button" : 3,
+            "option" : false,
+            "control" : false,
+            "action" : {
+              "keyPress" : [
+                "command",
+                "v"
+              ]
+            }
+          },
+          {
+            "control" : false,
+            "action" : {
+              "keyPress" : [
+                "command",
+                "c"
+              ]
+            },
+            "command" : false,
+            "shift" : false,
+            "button" : 4,
+            "option" : false
+          }
+        ],
+        "universalBackForward" : false
+      },
+      "pointer" : {
+        "acceleration" : 0.5,
+        "speed" : 0.25,
+        "disableAcceleration" : true
       }
     },
     {
-      "scrolling" : {
-        "acceleration" : {
-          "vertical" : 1
-        }
-      },
       "if" : {
         "device" : {
           "productName" : "Apple Internal Keyboard \/ Trackpad",
@@ -88,43 +112,48 @@
           "vendorID" : "0x5ac",
           "productID" : "0x281"
         }
+      },
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1
+        }
       }
     },
     {
       "if" : {
         "device" : {
-          "category" : "mouse",
+          "vendorID" : "0x46d",
           "productName" : "Wireless Receiver",
-          "productID" : "0xc542",
-          "vendorID" : "0x46d"
+          "category" : "mouse",
+          "productID" : "0xc542"
         }
       },
       "pointer" : {
-        "acceleration" : 0,
-        "speed" : 0.2514
+        "speed" : 0.2514,
+        "acceleration" : 0
       }
     },
     {
       "if" : {
         "device" : {
           "productID" : "0xc547",
-          "productName" : "USB Receiver",
           "category" : "mouse",
-          "vendorID" : "0x46d"
+          "vendorID" : "0x46d",
+          "productName" : "USB Receiver"
         }
       },
       "pointer" : {
-        "acceleration" : 0,
-        "speed" : 0.1726
+        "speed" : 0.1726,
+        "acceleration" : 0
       }
     },
     {
       "if" : {
         "device" : {
+          "productName" : "USB OPTICAL MOUSE",
           "vendorID" : "0x10c4",
           "category" : "mouse",
-          "productID" : "0x8108",
-          "productName" : "USB OPTICAL MOUSE"
+          "productID" : "0x8108"
         }
       },
       "pointer" : {
@@ -138,20 +167,19 @@
           "vertical" : true
         }
       },
-      "pointer" : {
-        "acceleration" : 0.5,
-        "disableAcceleration" : true
-      },
       "if" : {
         "device" : {
           "productID" : "0xb03a",
-          "serialNumber" : "5E2CD2A1",
+          "productName" : "LOGI M240",
           "vendorID" : "0x46d",
-          "category" : "mouse",
-          "productName" : "LOGI M240"
+          "serialNumber" : "5E2CD2A1",
+          "category" : "mouse"
         }
+      },
+      "pointer" : {
+        "acceleration" : 0.45,
+        "disableAcceleration" : true
       }
     }
-  ],
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.9.5"
+  ]
 }

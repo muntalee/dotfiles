@@ -3,6 +3,8 @@
 source ~/.zshenv
 source ~/.zinitrc
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
 
 #
 # ALIASES
@@ -17,6 +19,8 @@ alias vimlazy='NVIM_APPNAME=lazynvim nvim'
 alias vim='nvim'
 
 alias vimr='/Applications/VimR.app/Contents/MacOS/VimR'
+
+alias g='git'
 
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
@@ -91,3 +95,7 @@ function ghcup_init () {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+fortune | cowsay -f stegosaurus
+
+PATH=~/.console-ninja/.bin:$PATH

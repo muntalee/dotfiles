@@ -94,3 +94,5 @@ eval "$(/usr/local/bin/brew shellenv)"
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 #
 # export CLICOLOR=1
+
+PATH=~/.console-ninja/.bin:$PATH
