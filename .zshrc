@@ -98,4 +98,4 @@ function ghcup_init () {
 
 fortune | cowsay -f stegosaurus
 
-PATH=~/.console-ninja/.bin:$PATH
+

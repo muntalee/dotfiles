@@ -95,4 +95,3 @@ eval "$(/usr/local/bin/brew shellenv)"
 #
 # export CLICOLOR=1
 
-PATH=~/.console-ninja/.bin:$PATH

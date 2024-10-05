@@ -1,7 +1,6 @@
 return {
 
-	"bluz71/vim-moonfly-colors",
-	name = "moonfly",
+	"projekt0n/github-nvim-theme",
 	lazy = false,
 	priority = 1000,
 
@@ -10,7 +9,12 @@ return {
 		-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 		-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
-		vim.g.moonflyTransparent = true
-		vim.cmd.colorscheme("moonfly")
+		require("github-theme").setup({
+			options = {
+				transparent = true,
+			},
+		})
+
+		vim.cmd("colorscheme github_dark_dimmed")
 	end,
 }
