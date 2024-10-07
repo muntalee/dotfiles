@@ -2,7 +2,15 @@ starship init fish | source
 set -gx EDITOR nvim
 
 # Setup brew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+
+set -l os (uname)
+if test "$os" = Darwin
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else if test "$os" = Linux
+    # do things for Linux
+else
+    # do things for other operating systems
+end
 
 # Clear line on CTRL + C
 # Sometimes it still doesn't work well enough on node.js scripts :(

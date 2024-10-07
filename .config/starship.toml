@@ -1,9 +1,8 @@
 # ~/.config/starship.toml
 # a theme based off robbyrussell
 
-[format]
 # Format for prompt line: <username> @ <hostname> in <directory>
-format = "[$all]($style) "
+format = "$all "
 
 [username]
 # Show the username if it's not the default user
@@ -17,7 +16,6 @@ disabled = true
 # Style for the directory path
 style = "cyan"
 truncation_length = 3
-
 
 [git_branch]
 # Git branch in a style similar to robbyrussell
@@ -47,4 +45,3 @@ disabled = true
 
 [cmd_duration]
 disabled = true
-
