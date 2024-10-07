@@ -1,6 +1,5 @@
 return {
-
-	"projekt0n/github-nvim-theme",
+	"navarasu/onedark.nvim",
 	lazy = false,
 	priority = 1000,
 
@@ -9,12 +8,10 @@ return {
 		-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 		-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
-		require("github-theme").setup({
-			options = {
-				transparent = true,
-			},
+		require("onedark").setup({
+			transparent = true,
 		})
 
-		vim.cmd("colorscheme github_dark_dimmed")
+		vim.cmd("colorscheme onedark")
 	end,
 }
