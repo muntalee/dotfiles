@@ -19,20 +19,20 @@ truncation_length = 3
 
 [git_branch]
 # Git branch in a style similar to robbyrussell
-symbol = "⭠ "
+symbol = ""
 style = "bold purple"
 
 [git_status]
 # Git status indicators
-conflicted = "≠ "
+conflicted = "≠"
 ahead = "↑·"
 behind = "↓·"
 diverged = "↕·"
 untracked = "?"
-modified = "✚ "
-staged = "✖ "
-renamed = "» "
-deleted = "✖ "
+modified = "✚"
+staged = "✖"
+renamed = "»"
+deleted = "✖"
 
 [character]
 # The prompt character like robbyrussell
