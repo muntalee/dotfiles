@@ -1,47 +1,46 @@
-# ~/.config/starship.toml
-# a theme based off robbyrussell
-
-# Format for prompt line: <username> @ <hostname> in <directory>
-format = "$all "
-
-[username]
-# Show the username if it's not the default user
-show_always = false
-
-[hostname]
-# Show hostname
-disabled = true
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$python\
+$character"""
 
 [directory]
-# Style for the directory path
-style = "cyan"
-truncation_length = 3
-
-[git_branch]
-# Git branch in a style similar to robbyrussell
-symbol = ""
-style = "bold purple"
-
-[git_status]
-# Git status indicators
-conflicted = "≠"
-ahead = "↑·"
-behind = "↓·"
-diverged = "↕·"
-untracked = "?"
-modified = "✚"
-staged = "✖"
-renamed = "»"
-deleted = "✖"
+style = "blue"
 
 [character]
-# The prompt character like robbyrussell
-success_symbol = "[➜](bold green)"
-error_symbol = "[➜](bold red)"
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
 
-# disabled stuff
-[nodejs]
-disabled = true
+[git_branch]
+format = "[$branch]($style)"
+style = "bright-black"
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
 
 [cmd_duration]
-disabled = true
+format = "[$duration]($style) "
+style = "yellow"
+
+[python]
+format = "[$virtualenv]($style) "
+style = "bright-black"

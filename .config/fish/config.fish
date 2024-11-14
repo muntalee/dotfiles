@@ -39,3 +39,4 @@ set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
 # the following to ~/.config/fish/config.fish:
 
 pyenv init - | source
+nvm use latest

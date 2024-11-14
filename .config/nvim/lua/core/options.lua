@@ -37,14 +37,14 @@ opt.undodir = "/tmp/"
 opt.undofile = true
 
 -- fully hide statusline
-vim.opt.laststatus = 0
-vim.opt.showmode = false
-vim.api.nvim_set_hl(0, "Statusline", { link = "Normal" })
-vim.api.nvim_set_hl(0, "StatuslineNC", { link = "Normal" })
+-- vim.opt.laststatus = 0
+-- vim.opt.showmode = false
+-- vim.api.nvim_set_hl(0, "Statusline", { link = "Normal" })
+-- vim.api.nvim_set_hl(0, "StatuslineNC", { link = "Normal" })
 
 -- hide ~ in blank lines
-vim.opt.fillchars = { eob = " " }
-vim.cmd([[hi NonText guifg=bg]])
+-- vim.opt.fillchars = { eob = " " }
+-- vim.cmd([[hi NonText guifg=bg]])
 
 -- theming that i want for all colorschemes
 vim.cmd([[highlight ExtraWhitespace ctermbg=red guibg=red]])
