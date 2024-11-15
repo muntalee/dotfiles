@@ -1,32 +1,31 @@
 {
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0",
   "schemes" : [
     {
       "if" : {
         "device" : {
-          "productName" : "Wireless Device",
           "category" : "mouse",
+          "vendorID" : "0x3151",
           "productID" : "0x3020",
-          "vendorID" : "0x3151"
+          "productName" : "Wireless Device"
         }
+      },
+      "scrolling" : {
+        "speed" : 0,
+        "distance" : "auto",
+        "reverse" : true,
+        "acceleration" : 1
       },
       "pointer" : {
         "acceleration" : 0,
         "speed" : 0.3942
-      },
-      "scrolling" : {
-        "distance" : "auto",
-        "reverse" : true,
-        "acceleration" : 1,
-        "speed" : 0
       }
     },
     {
       "scrolling" : {
         "reverse" : true,
         "acceleration" : {
-          "vertical" : 0.86,
-          "horizontal" : 1
+          "horizontal" : 1,
+          "vertical" : 0.86
         }
       },
       "pointer" : {
@@ -36,32 +35,32 @@
       },
       "if" : {
         "device" : {
+          "productID" : "0xc52f",
           "productName" : "USB Receiver",
-          "category" : "mouse",
           "vendorID" : "0x46d",
-          "productID" : "0xc52f"
+          "category" : "mouse"
         }
       }
     },
     {
-      "scrolling" : {
-        "speed" : {
-          "vertical" : 6.54
-        },
-        "reverse" : {
-          "vertical" : true
-        },
-        "acceleration" : {
-          "vertical" : 0.47
-        }
-      },
       "if" : {
         "device" : {
           "productID" : "0xc092",
-          "productName" : "G203 LIGHTSYNC Gaming Mouse",
-          "vendorID" : "0x46d",
           "category" : "mouse",
-          "serialNumber" : "205C396E5642"
+          "vendorID" : "0x46d",
+          "serialNumber" : "205C396E5642",
+          "productName" : "G203 LIGHTSYNC Gaming Mouse"
+        }
+      },
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        },
+        "speed" : {
+          "vertical" : 6.54
+        },
+        "acceleration" : {
+          "vertical" : 0.47
         }
       },
       "buttons" : {
@@ -70,11 +69,11 @@
         },
         "mappings" : [
           {
+            "control" : false,
             "command" : false,
             "shift" : false,
-            "button" : 3,
             "option" : false,
-            "control" : false,
+            "button" : 3,
             "action" : {
               "keyPress" : [
                 "command",
@@ -84,6 +83,7 @@
           },
           {
             "control" : false,
+            "shift" : false,
             "action" : {
               "keyPress" : [
                 "command",
@@ -91,29 +91,64 @@
               ]
             },
             "command" : false,
-            "shift" : false,
-            "button" : 4,
-            "option" : false
+            "option" : false,
+            "button" : 4
           }
         ],
         "universalBackForward" : false
       },
       "pointer" : {
-        "acceleration" : 0.5,
         "speed" : 0.25,
-        "disableAcceleration" : true
+        "disableAcceleration" : true,
+        "acceleration" : 0.5
+      }
+    },
+    {
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1
+        }
+      },
+      "if" : {
+        "device" : {
+          "productName" : "Apple Internal Keyboard \/ Trackpad",
+          "productID" : "0x281",
+          "vendorID" : "0x5ac",
+          "category" : "trackpad"
+        }
+      }
+    },
+    {
+      "pointer" : {
+        "speed" : 0.2514,
+        "acceleration" : 0
+      },
+      "if" : {
+        "device" : {
+          "productID" : "0xc542",
+          "productName" : "Wireless Receiver",
+          "vendorID" : "0x46d",
+          "category" : "mouse"
+        }
       }
     },
     {
       "if" : {
         "device" : {
-          "productName" : "Apple Internal Keyboard \/ Trackpad",
-          "category" : "trackpad",
-          "vendorID" : "0x5ac",
-          "productID" : "0x281"
+          "productName" : "USB Receiver",
+          "vendorID" : "0x46d",
+          "productID" : "0xc547",
+          "category" : "mouse"
         }
       },
+      "pointer" : {
+        "acceleration" : 0,
+        "speed" : 0.1726
+      },
       "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        },
         "acceleration" : {
           "vertical" : 1
         }
@@ -122,64 +157,62 @@
     {
       "if" : {
         "device" : {
-          "vendorID" : "0x46d",
-          "productName" : "Wireless Receiver",
-          "category" : "mouse",
-          "productID" : "0xc542"
-        }
-      },
-      "pointer" : {
-        "speed" : 0.2514,
-        "acceleration" : 0
-      }
-    },
-    {
-      "if" : {
-        "device" : {
-          "productID" : "0xc547",
-          "category" : "mouse",
-          "vendorID" : "0x46d",
-          "productName" : "USB Receiver"
-        }
-      },
-      "pointer" : {
-        "speed" : 0.1726,
-        "acceleration" : 0
-      }
-    },
-    {
-      "if" : {
-        "device" : {
-          "productName" : "USB OPTICAL MOUSE",
           "vendorID" : "0x10c4",
+          "productName" : "USB OPTICAL MOUSE",
           "category" : "mouse",
           "productID" : "0x8108"
         }
       },
       "pointer" : {
-        "acceleration" : 0.4,
-        "disableAcceleration" : true
+        "disableAcceleration" : true,
+        "acceleration" : 0.4
       }
     },
     {
+      "if" : {
+        "device" : {
+          "serialNumber" : "5E2CD2A1",
+          "productID" : "0xb03a",
+          "vendorID" : "0x46d",
+          "productName" : "LOGI M240",
+          "category" : "mouse"
+        }
+      },
       "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1.05
+        },
         "reverse" : {
           "vertical" : true
         }
       },
+      "pointer" : {
+        "acceleration" : 1.5,
+        "disableAcceleration" : true
+      }
+    },
+    {
       "if" : {
         "device" : {
-          "productID" : "0xb03a",
-          "productName" : "LOGI M240",
           "vendorID" : "0x46d",
-          "serialNumber" : "5E2CD2A1",
+          "serialNumber" : "465DB522",
+          "productID" : "0xc094",
+          "productName" : "PRO X Wireless",
           "category" : "mouse"
         }
       },
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        },
+        "acceleration" : {
+          "vertical" : 1
+        }
+      },
       "pointer" : {
-        "acceleration" : 0.45,
         "disableAcceleration" : true
       }
     }
-  ]
+  ],
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0"
 }
