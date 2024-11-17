@@ -7,8 +7,8 @@ return {
 
 			configs.setup({
 				ensure_installed = "all",
+				ignore_install = { "wing" },
 				auto_install = true,
-				ignore_install = {},
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
