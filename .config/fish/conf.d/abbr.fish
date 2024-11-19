@@ -1,4 +1,6 @@
-abbr vim "nvim"
+if type -q nvim
+    abbr --add -g vim 'nvim'
+end
 
 if type -q eza
     abbr --add -g ls 'eza -a'
