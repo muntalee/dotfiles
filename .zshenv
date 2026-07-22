@@ -53,8 +53,8 @@ export CPATH="/opt/homebrew/include:$CPATH"
 export LIBRARY_PATH="/opt/homebrew/lib:$LIBRARY_PATH"
 export LD_LIBRARY_PATH="/opt/homebrew/lib:$LD_LIBRARY_PATH"
 
-#export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-1.8.jdk/Contents/Home"
-export JAVA_HOME=$(/usr/libexec/java_home)
+# #export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-1.8.jdk/Contents/Home"
+# export JAVA_HOME=$(/usr/libexec/java_home)
 
 export HOMEBREW_PREFIX="/opt/homebrew";
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
