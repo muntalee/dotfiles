@@ -1,0 +1,28 @@
+[bar.default]
+end = [
+    "tray",
+    "network",
+    "bluetooth",
+    "volume",
+    "brightness",
+    "battery",
+    "caffeine",
+    "settings",
+    "control-center",
+    "session",
+]
+
+[widget.network]
+show_label = false
+
+[widget.volume]
+show_label = false
+
+[widget.battery]
+show_label = false
+
+[widget.brightness]
+show_label = false
+
+[widget.clock]
+format = "{:%-I:%M %p} {:%A, %B %-d, %Y}"

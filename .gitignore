@@ -1,0 +1,27 @@
+# Credentials and authentication state
+.config/gh/hosts.yml
+.config/gpu-screen-recorder/restore_token
+.config/opencode/service.json
+.config/pulse/cookie
+**/hosts.yml
+**/*token*
+**/*credential*
+**/*cookie*
+**/Cookies*
+**/.env
+**/.env.*
+**/*.pem
+**/*.key
+
+# Application state, history, logs, and caches are not portable dotfiles
+**/sessionData/
+**/*history*
+**/state*.json
+**/state*.toml
+**/*.log
+**/*.db
+**/*.db-*
+**/*.sqlite
+**/*.sqlite-*
+**/*.cbor
+**/*.bak

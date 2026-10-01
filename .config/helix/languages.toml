@@ -1,0 +1,25 @@
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[[language]]
+name = "c"
+roots = [".clangd", "compile_commands.json", "compile_flags.txt", "CMakeLists.txt", "Makefile", ".git"]
+language-servers = ["clangd"]
+formatter = { command = "clang-format" }
+
+[[language]]
+name = "cpp"
+roots = [".clangd", "compile_commands.json", "compile_flags.txt", "CMakeLists.txt", "Makefile", ".git"]
+language-servers = ["clangd"]
+formatter = { command = "clang-format" }
+
+[[language]]
+name = "rust"
+roots = ["Cargo.toml", "Cargo.lock", "rust-project.json", ".git"]
+language-servers = ["rust-analyzer"]
+
+[[language]]
+name = "python"
+roots = ["pyproject.toml", "uv.lock", "pyrightconfig.json", "setup.py", "requirements.txt", ".git"]
+language-servers = ["pyright"]

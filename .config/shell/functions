@@ -1,0 +1,41 @@
+# Small, portable helpers.
+fip() {
+    (( $# < 2 )) && { echo "Usage: fip <host> <port1> [port2] ..."; return 1; }
+    local host="$1"
+    shift
+    local port
+    for port in "$@"; do
+        ssh -f -N -L "${port}:localhost:${port}" "$host" &&
+            echo "Forwarding localhost:$port -> $host:$port"
+    done
+}
+
+lip() {
+    pgrep -af 'ssh.*-L [0-9]+:localhost:[0-9]+' || echo "No active forwards"
+}
+
+dip() {
+    (( $# == 0 )) && { echo "Usage: dip <port1> [port2] ..."; return 1; }
+    local port
+    for port in "$@"; do
+        pkill -f "ssh.*-L ${port}:localhost:${port}" &&
+            echo "Stopped forwarding port $port" ||
+            echo "No forwarding on port $port"
+    done
+}
+
+ga() {
+    [[ -z ${1:-} ]] && { echo "Usage: ga <branch-name>"; return 1; }
+    local branch="$1" base
+    base="$(basename "$PWD")"
+    git worktree add -b "$branch" "../${base}--${branch}"
+}
+
+gd() {
+    local cwd base branch
+    cwd="$PWD"
+    base="$(basename "$cwd")"
+    [[ "$base" == *--* ]] || { echo "Not a generated worktree: $base"; return 1; }
+    branch="${base#*--}"
+    git worktree remove "$cwd" --force && git branch -D "$branch"
+}

@@ -1,0 +1,106 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+
+  // ---- Tux -------------------------------------------------------------
+  // Deliberately NOT the Noctalia theme: the terminal remaps the ANSI names,
+  // so `yellow` here would come out as Noctalia blue (#527eff). Explicit RGB
+  // pins Tux to the real mascot regardless of palette.
+  //
+  //   $1 body + flippers   $2 face + belly   $3 beak + feet
+  //
+  // $1 is a neutral dark grey, not #000000: the shell background is #03213a,
+  // and true black on it leaves the silhouette invisible. Neutral grey keeps
+  // the body reading as "black" against the white belly and yellow beak while
+  // staying clearly off-theme. Tune it freely:
+  //   #2e2e2e  subtler, closer to true black
+  //   #4d4d4e  current
+  //   #6b6b6c  pops more, reads as mid-grey
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/logos/tux.ffascii",
+    "color": {
+      "1": "#4d4d4e",
+      "2": "#ffffff",
+      "3": "#ffcc00"
+    },
+    "padding": {
+      "right": 2
+    }
+  },
+
+  // ---- Noctalia theme, for the text only -------------------------------
+  "display": {
+    "color": {
+      "keys": "#33b1ff",
+      "title": "#42be65"
+    },
+    "separator": ": ",
+    "percent": {
+      "color": {
+        "green": "#be95ff",
+        "yellow": "#80ceff",
+        "red": "#ee5396"
+      }
+    }
+  },
+
+  "modules": [
+    "title",
+
+    "break",
+    { "type": "custom", "format": "{#keys}▏ {#title}System{#}" },
+    "os",
+    "kernel",
+    "uptime",
+    {
+      "type": "command",
+      "key": "OS Age",
+      "text": "first=$(awk 'match($0,/^\\[([^]]+)/,m){print m[1]; exit}' /var/log/pacman.log); days=$((($(date +%s)-$(date -d \"$first\" +%s))/86400)); printf '%s days' \"$days\""
+    },
+
+    "break",
+    { "type": "custom", "format": "{#keys}▏ {#title}Desktop{#}" },
+    "shell",
+    {
+      "type": "wm",
+      "key": "WM"
+    },
+    "terminal",
+    {
+      "type": "display",
+      "key": "Screen",
+      "format": "{name} {width}x{height} @ {refresh-rate}Hz"
+    },
+
+    "break",
+    { "type": "custom", "format": "{#keys}▏ {#title}Hardware{#}" },
+    {
+      "type": "cpu",
+      "temp": true
+    },
+    "gpu",
+    "memory",
+    {
+      "type": "disk",
+      "folders": "/"
+    },
+    {
+      "type": "battery",
+      "key": "Battery",
+      "format": "{capacity} ({time-formatted} left)"
+    },
+
+    "break",
+    { "type": "custom", "format": "{#keys}▏ {#title}Network{#}" },
+    {
+      "type": "wifi",
+      "key": "Wi-Fi",
+      "format": "{ssid} ({signal-quality}, {band} GHz)"
+    },
+
+    "break",
+    { "type": "custom", "format": "{#keys}▏ {#title}Packages & Theme{#}" },
+    "packages",
+    "colors"
+  ]
+}

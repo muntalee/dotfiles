@@ -1,0 +1,189 @@
+{
+  "device_name": "Spotifast",
+  "bitrate": 320,
+  "normalisation": false,
+  "autoplay": true,
+  "gapless": true,
+  "audio_backend": null,
+  "audio_device": null,
+  "audio_buffer_ms": 100,
+  "audio_cache": true,
+  "audio_cache_mb": 1024,
+  "theme": "system",
+  "language": "system",
+  "custom_theme": "noctalia.json",
+  "custom_theme_cache": {
+    "filename": "noctalia.json",
+    "palette": {
+      "dark": true,
+      "window": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "panel": [
+        14,
+        14,
+        14,
+        255
+      ],
+      "surface": [
+        23,
+        23,
+        23,
+        255
+      ],
+      "surface_hover": [
+        33,
+        33,
+        33,
+        255
+      ],
+      "surface_active": [
+        42,
+        42,
+        42,
+        255
+      ],
+      "outline": [
+        61,
+        61,
+        61,
+        255
+      ],
+      "text": [
+        242,
+        244,
+        248,
+        255
+      ],
+      "secondary": [
+        221,
+        225,
+        230,
+        255
+      ],
+      "dim": [
+        99,
+        99,
+        99,
+        255
+      ],
+      "accent": [
+        51,
+        177,
+        255,
+        255
+      ],
+      "accent_hover": [
+        56,
+        179,
+        255,
+        255
+      ],
+      "on_accent": [
+        22,
+        22,
+        22,
+        255
+      ],
+      "danger": [
+        238,
+        83,
+        150,
+        255
+      ],
+      "warning": [
+        130,
+        207,
+        255,
+        255
+      ],
+      "overlay": [
+        42,
+        42,
+        42,
+        255
+      ],
+      "shadow": [
+        0,
+        0,
+        0,
+        128
+      ]
+    }
+  },
+  "home": {
+    "made_for_you": {
+      "visible": true
+    },
+    "recommendations": {
+      "visible": true
+    }
+  },
+  "accent_from_art": true,
+  "volume": 45874,
+  "sidebar_visible": true,
+  "art_expanded": false,
+  "sidebar_compact": false,
+  "sidebar_grid": false,
+  "sidebar_width": 292.09375,
+  "lyrics_width": 360.0,
+  "queue_width": 360.0,
+  "tracklist_compact": false,
+  "middle_click_autoscroll": false,
+  "search_history": [],
+  "show_shortcut_hints": true,
+  "web_client_id": null,
+  "personal_app_nudge_at": null,
+  "personal_app_intro_seen": true,
+  "playback_authorized": true,
+  "keep_playing_in_background": true,
+  "check_for_updates": true,
+  "download_updates_automatically": false,
+  "pinned_contexts": [],
+  "liked_songs_pinned": true,
+  "sidebar_order": [],
+  "library_sort": {},
+  "zoom": 1.0,
+  "winamp_window": false,
+  "winamp_show_taskbar": true,
+  "custom_titlebar": false,
+  "skin": null,
+  "skin_scale": null,
+  "winamp_on_top": false,
+  "vis": "bars",
+  "playlist_open": false,
+  "playlist_height": 174,
+  "eq_open": false,
+  "eq_on": false,
+  "eq_preamp_db": 0.0,
+  "eq_bands_db": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "balance": 0.0,
+  "mono": false,
+  "playlist_shaded": false,
+  "eq_shaded": false,
+  "winamp_shaded": false,
+  "milkdrop_open": false,
+  "milkdrop_seconds": 10,
+  "milkdrop_fps": 60,
+  "milkdrop_screen_hz": 60,
+  "milkdrop_scale": 1,
+  "milkdrop_fullscreen": false,
+  "milkdrop_size": [
+    626.0,
+    748.0
+  ]
+}
