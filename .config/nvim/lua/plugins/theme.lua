@@ -5,9 +5,17 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.g.moonflyItalics = false
-			vim.g.moonflyTerminalColors = true
 			vim.cmd.colorscheme("moonfly")
+		end,
+	},
+	{
+		"ellisonleao/gruvbox.nvim",
+		lazy = false,
+		priority = 1100,
+		config = function()
+			require("gruvbox").setup({
+				transparent_mode = true,
+			})
 		end,
 	},
 }

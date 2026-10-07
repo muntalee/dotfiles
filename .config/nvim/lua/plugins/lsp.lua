@@ -9,7 +9,6 @@ return {
             "L3MON4D3/LuaSnip",
             "saadparwaiz1/cmp_luasnip",
             "rafamadriz/friendly-snippets",
-            "SmiteshP/nvim-navic",
         },
         config = function()
             require("mason").setup()
@@ -21,15 +20,8 @@ return {
                 },
             })
 
-            local navic = require("nvim-navic")
-
             vim.api.nvim_create_autocmd("LspAttach", {
                 callback = function(args)
-                    local client = vim.lsp.get_client_by_id(args.data.client_id)
-                    if client and client.server_capabilities.documentSymbolProvider then
-                        navic.attach(client, args.buf)
-                    end
-
                     local opts = { buffer = args.buf }
 
                     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)

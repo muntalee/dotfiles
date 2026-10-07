@@ -1,3 +1,4 @@
+--[[
 return {
 	"akinsho/bufferline.nvim",
 	event = "VeryLazy",
@@ -22,7 +23,10 @@ return {
 			separator_selected = { bg = "none", fg = "none" },
 			separator_visible = { bg = "none", fg = "none" },
 			tab = { bg = "none" },
-			tab_selected = { bg = "none", bold = true }
+			tab_selected = { bg = "none", bold = true },
 		},
 	},
 }
+]]
+
+return {}

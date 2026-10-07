@@ -13,14 +13,4 @@ return {
 			"nvim-lua/plenary.nvim",
 		},
 	},
-	{
-		"lewis6991/gitsigns.nvim",
-		opts = {
-			signs = { add = { text = "" }, change = { text = "" }, delete = { text = "" }, topdelete = { text = "" }, changedelete = { text = "" } },
-			signcolumn = false,
-			preview_config = { show_header = false },
-			numhl = false,
-			linehl = false,
-		},
-	},
 }

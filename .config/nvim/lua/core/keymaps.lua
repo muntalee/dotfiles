@@ -15,9 +15,6 @@ keymap.set("n", "<leader>w", ":bd<CR>", { silent = true })          -- close cur
 -- mapping to restart lsp if necessary
 keymap.set("n", "<leader>rs", ":LspRestart<CR>", { noremap = true, silent = true })
 
--- enable/disable line numbers
-keymap.set("n", "<C-n>", ":set nu! rnu!<cr>")
-
 -- opens file explorer
 keymap.set("n", "<leader>fo", ":!open .<cr>")
 

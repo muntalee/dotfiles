@@ -22,18 +22,19 @@ opt.number = true
 opt.relativenumber = true
 opt.signcolumn = "yes"
 opt.showmode = false
+opt.fillchars:append({ eob = " " })
 
 opt.updatetime = 1000
 
 vim.diagnostic.config({
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = "E",
-            [vim.diagnostic.severity.WARN] = "W",
-            [vim.diagnostic.severity.INFO] = "I",
-            [vim.diagnostic.severity.HINT] = "H",
-        },
-    },
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "E",
+			[vim.diagnostic.severity.WARN] = "W",
+			[vim.diagnostic.severity.INFO] = "I",
+			[vim.diagnostic.severity.HINT] = "H",
+		},
+	},
 })
 
 -- clipboard & backspace
@@ -45,13 +46,13 @@ opt.splitright = true
 opt.splitbelow = true
 opt.iskeyword:append("-")
 
--- reload files changed on disk (e.g. by external tools like opencode)
+-- reload files changed on disk
 opt.autoread = true
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
-    pattern = "*",
-    callback = function()
-        vim.cmd("checktime")
-    end,
+	pattern = "*",
+	callback = function()
+		vim.cmd("checktime")
+	end,
 })
 
 -- undo dir
