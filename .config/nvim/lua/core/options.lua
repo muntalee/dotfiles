@@ -1,6 +1,7 @@
 vim.cmd([[filetype plugin on]])
 
 local opt = vim.opt
+local cmd = vim.cmd
 
 opt.compatible = false
 
@@ -58,3 +59,6 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
 -- undo dir
 opt.undodir = "/tmp/"
 opt.undofile = true
+
+-- theme
+-- cmd.colorscheme("vim")

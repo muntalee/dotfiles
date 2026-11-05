@@ -1,0 +1,25 @@
+#!/bin/bash
+
+gammastep_pid=$(pgrep -x gammastep) || {
+    printf '%s\n' 'Gammastep is not running.' >&2
+    exit 1
+}
+
+if [[ $gammastep_pid == *$'\n'* || ! $gammastep_pid =~ ^[0-9]+$ ]]; then
+    printf '%s\n' 'Expected exactly one Gammastep process.' >&2
+    exit 1
+fi
+
+if [[ -z ${XDG_RUNTIME_DIR:-} ]]; then
+    printf '%s\n' 'XDG_RUNTIME_DIR is not set.' >&2
+    exit 1
+fi
+
+kill -USR1 "$gammastep_pid"
+
+state_file="$XDG_RUNTIME_DIR/sway-gammastep-off"
+if [[ -e $state_file ]]; then
+    rm -- "$state_file"
+else
+    : > "$state_file"
+fi

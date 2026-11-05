@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+state_file="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/sway-caffeine"
+
+case ${1:-} in
+    status)
+        if [[ -e $state_file ]]; then
+            printf 'on\n'
+        else
+            printf 'off\n'
+        fi
+        ;;
+    on)
+        mkdir -p "${state_file%/*}"
+        (umask 077; : > "$state_file")
+        ;;
+    off)
+        rm -f "$state_file"
+        ;;
+    run)
+        shift
+        if [[ $# -eq 0 ]]; then
+            printf 'caffeine run requires a command\n' >&2
+            exit 2
+        fi
+        [[ -e $state_file ]] && exit 0
+        exec "$@"
+        ;;
+    *)
+        printf 'Usage: %s {status|on|off|run COMMAND...}\n' "$0" >&2
+        exit 2
+        ;;
+esac

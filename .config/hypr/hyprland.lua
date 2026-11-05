@@ -31,7 +31,7 @@ hl.config({
 		gaps_in = 4,
 		gaps_out = 8,
 		border_size = 1,
-		layout = "dwindle",
+		layout = "scrolling",
 		resize_on_border = false,
 		allow_tearing = false,
 		col = {
@@ -84,7 +84,7 @@ hl.on("hyprland.start", function()
 	-- Do NOT call the binary here: it lives at /usr/lib/hyprpolkitagent/hyprpolkitagent
 	-- and is not in PATH, so a bare call fails silently.
 	hl.exec_cmd("sh -c 'if ! command -v noctalia >/dev/null 2>&1; then mako; fi'")
-	hl.exec_cmd("sh -c 'command -v hyprpaper >/dev/null && hyprpaper'")
+	hl.exec_cmd("waypaper --restore")
 	hl.exec_cmd(
 		"sh -c 'if command -v noctalia >/dev/null 2>&1; then noctalia --daemon; elif command -v ashell >/dev/null 2>&1; then ashell; fi'"
 	)
@@ -96,9 +96,9 @@ hl.bind(var_mainMod .. " + SHIFT + RETURN", hl.dsp.exec_cmd(var_browser))
 hl.bind(var_mainMod .. " + SHIFT + F", hl.dsp.exec_cmd(var_fileManager))
 hl.bind(var_mainMod .. " + SHIFT + ALT + F", hl.dsp.exec_cmd(var_fileManager .. ' --working-directory "$PWD"'))
 hl.bind(var_mainMod .. " + SPACE", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
-hl.bind(var_mainMod .. " + COMMA", hl.dsp.exec_cmd("noctalia msg settings-open"))
+hl.bind(var_mainMod .. " + COMMA", hl.dsp.exec_cmd('bash "$HOME/.config/sway/settings-menu"'))
 hl.bind(var_mainMod .. " + ALT + SPACE", hl.dsp.exec_cmd('bash "' .. var_configDir .. '/bin/system-menu.sh"'))
-hl.bind(var_mainMod .. " + ESCAPE", hl.dsp.exec_cmd("noctalia msg panel-toggle session"))
+hl.bind(var_mainMod .. " + ESCAPE", hl.dsp.exec_cmd('bash "$HOME/.config/sway/session-menu"'))
 hl.bind(var_mainMod .. " + CTRL + L", hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind(var_mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd('loginctl terminate-session "$XDG_SESSION_ID"'))
 hl.bind(var_mainMod .. " + CTRL + SHIFT + SPACE", hl.dsp.exec_cmd('bash "' .. var_configDir .. '/bin/theme-menu.sh"'))
@@ -139,6 +139,11 @@ hl.bind(var_mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "left" }
 hl.bind(var_mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
 hl.bind(var_mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
 hl.bind(var_mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
+-- Resize the focused tiled pane; holding a key repeats 40px adjustments.
+hl.bind(var_mainMod .. " + ALT + H", hl.dsp.window.resize({ x = -40, y = 0, relative = true }), { repeating = true })
+hl.bind(var_mainMod .. " + ALT + J", hl.dsp.window.resize({ x = 0, y = 40, relative = true }), { repeating = true })
+hl.bind(var_mainMod .. " + ALT + K", hl.dsp.window.resize({ x = 0, y = -40, relative = true }), { repeating = true })
+hl.bind(var_mainMod .. " + ALT + L", hl.dsp.window.resize({ x = 40, y = 0, relative = true }), { repeating = true })
 hl.bind(var_mainMod .. " + LEFT", hl.dsp.focus({ direction = "left" }))
 hl.bind(var_mainMod .. " + RIGHT", hl.dsp.focus({ direction = "right" }))
 hl.bind(var_mainMod .. " + UP", hl.dsp.focus({ direction = "up" }))
@@ -198,14 +203,6 @@ hl.window_rule({
 	float = true,
 })
 
--- Keep Zathura PDFs floating and centered over the current workspace.
-hl.window_rule({
-	name = "float-center-zathura",
-	match = { class = "^org\\.pwmt\\.zathura$" },
-	float = true,
-	center = true,
-})
-
 -- Keep MPV videos floating and centered over the current workspace.
 hl.window_rule({
 	name = "float-center-mpv",
@@ -214,9 +211,17 @@ hl.window_rule({
 	center = true,
 })
 
+hl.window_rule({
+	name = "float-center-waypaper",
+	match = { title = "^Waypaper$" },
+	float = true,
+	center = true,
+})
+
 -- Screenshots, clipboard, emojis, and night light
 hl.bind("PRINT", hl.dsp.exec_cmd('bash "' .. var_configDir .. '/bin/screenshot.sh"'))
 hl.bind("ALT + PRINT", hl.dsp.exec_cmd('bash "' .. var_configDir .. '/bin/screenrecord.sh"'))
+hl.bind(var_mainMod .. " + SHIFT + CTRL + 5", hl.dsp.exec_cmd("hyprcap rec window -w -n"))
 -- Noctalia's native screenshot actions mirror macOS: 3 captures the focused
 -- display, 4 selects a region, and 5 opens the annotate/copy/save workflow.
 hl.bind("CTRL + ALT + SHIFT + 3", hl.dsp.exec_cmd("noctalia msg screenshot-fullscreen"))
@@ -264,14 +269,12 @@ hl.bind("XF86AudioStop", hl.dsp.exec_cmd('bash "' .. var_configDir .. '/bin/medi
 -- Custom monitor scaling bindings. The helper chooses the next safe scale.
 hl.bind(var_mainMod .. " + SLASH", hl.dsp.exec_cmd('bash "' .. var_configDir .. '/bin/monitor-scale.sh" up'))
 hl.bind(var_mainMod .. " + ALT + SLASH", hl.dsp.exec_cmd('bash "' .. var_configDir .. '/bin/monitor-scale.sh" down'))
+hl.bind(var_mainMod .. " + BACKSLASH", hl.dsp.exec_cmd('bash "' .. var_configDir .. '/bin/layout-cycle.sh"'))
 require("workspaces")
 
 hl.env("QT_QPA_PLATFORM", "wayland")
-hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
 hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
--- Adwaita-qt: true Adwaita widget rendering. Swap to "gtk3" in
--- QT_QPA_PLATFORMTHEME above if Noctalia colors matter more than widget shape.
 hl.env("QT_STYLE_OVERRIDE", "Adwaita-Dark")
 -- QML/QtQuick apps (ignore QT_STYLE_OVERRIDE): Fusion makes them follow the
 -- platform palette (Noctalia colors) instead of their own default look.
@@ -280,5 +283,26 @@ hl.env("QT_QUICK_CONTROLS_STYLE", "Fusion")
 -- HyprMod managed settings
 require("hyprland-gui")
 
--- TODO: the following entries need manual conversion to Lua:
---   bind = $mainMod, mouse:272, movewindow
+hl.config({
+	animations = {
+		enabled = true,
+	},
+})
+
+-- 1. Register a Windows-like "deceleration" curve.
+-- It starts incredibly fast (0.0) but cushions smoothly at the end (1.0).
+hl.curve("winDecel", {
+	type = "bezier",
+	points = { { 0.0, 1.0 }, { 0.0, 1.0 } },
+})
+
+-- 2. Apply the curve to your existing layout with snappier speeds.
+-- 'speed = 1.5' means 150ms. 'speed = 2' means 200ms.
+hl.animation({ leaf = "global", enabled = true, speed = 1.5, bezier = "winDecel" })
+hl.animation({ leaf = "windows", enabled = true, speed = 2, bezier = "winDecel", style = "popin 93%" })
+hl.animation({ leaf = "fade", enabled = true, speed = 1.5, bezier = "winDecel" })
+hl.animation({ leaf = "border", enabled = true, speed = 2, bezier = "default" })
+
+-- Keep your desired minimal exclusions intact
+hl.animation({ leaf = "workspaces", enabled = false })
+hl.animation({ leaf = "borderangle", enabled = false })

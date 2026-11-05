@@ -1,0 +1,46 @@
+general {
+    output_format = "i3bar"
+    colors = true
+    interval = 5
+}
+
+order += "cpu_usage"
+order += "memory"
+order += "wireless wlp2s0"
+order += "battery all"
+order += "volume master"
+order += "tztime local"
+
+cpu_usage {
+    format = "CPU %usage"
+}
+
+memory {
+    memory_used_method = "memavailable"
+    format = "RAM %used/%total"
+    unit = "Gi"
+    decimals = 1
+}
+
+wireless wlp2s0 {
+    format_up = "IP %ip"
+    format_down = "WIFI down"
+}
+
+battery all {
+    format = "%status %percentage"
+    format_down = ""
+    format_percentage = "%.0f%%"
+}
+
+volume master {
+    device = "pulse"
+    mixer = "Master"
+    mixer_idx = 0
+    format = "VOL %volume"
+    format_muted = "VOL muted"
+}
+
+tztime local {
+    format = "%a %b %-d %-I:%M %p"
+}

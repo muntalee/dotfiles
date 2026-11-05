@@ -1,0 +1,14 @@
+study_minutes 40
+break_minutes 10
+long_break_minutes 30
+sessions 4
+background_enabled 1
+study_red 255
+study_green 0
+study_blue 0
+break_red 0
+break_green 180
+break_blue 0
+long_break_red 40
+long_break_green 100
+long_break_blue 255

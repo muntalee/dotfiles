@@ -1,0 +1,7 @@
+font-family = JetBrainsMono NF
+font-size = 10
+theme = noctalia
+# background-opacity = 0.9
+confirm-close-surface = false
+maximize = true
+fullscreen = false

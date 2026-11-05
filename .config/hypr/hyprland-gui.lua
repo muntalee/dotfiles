@@ -2,66 +2,62 @@
 
 -- Settings
 hl.config({
-    animations = {
-        enabled = false,
-    },
-    decoration = {
-        blur = {
-            enabled = true,
-        },
-        shadow = {
-            enabled = true,
-        },
-    },
-    ecosystem = {
-        no_donation_nag = true,
-        no_update_news = true,
-    },
-    general = {
-        col = {
-            active_border = {
-                colors = {"rgba(77767bff)"},
-                angle = 45,
-            },
-        },
-        gaps_in = 0,
-        gaps_out = 0,
-        resize_on_border = true,
-    },
-    input = {
-        sensitivity = -0.25,
-    },
-    misc = {
-        key_press_enables_dpms = true,
-    },
+	animations = {
+		enabled = true,
+	},
+	decoration = {
+		blur = {
+			enabled = true,
+		},
+		inactive_opacity = 1.0,
+		shadow = {
+			enabled = true,
+		},
+	},
+	ecosystem = {
+		no_donation_nag = true,
+		no_update_news = true,
+	},
+	general = {
+		border_size = 0,
+		gaps_in = 0,
+		gaps_out = 0,
+		resize_on_border = true,
+	},
+	input = {
+		sensitivity = -0.25,
+	},
+	misc = {
+		key_press_enables_dpms = true,
+	},
 })
 
 -- Animations
 hl.animation({
-    leaf = "global",
-    enabled = true,
-    speed = 2.0,
-    bezier = "default",
+	leaf = "global",
+	enabled = true,
+	speed = 2.0,
+	bezier = "default",
 })
 hl.animation({
-    leaf = "windows",
-    enabled = true,
-    speed = 2.0,
-    bezier = "default",
+	leaf = "windows",
+	enabled = true,
+	speed = 2.0,
+	bezier = "default",
 })
 hl.animation({
-    leaf = "layers",
-    enabled = true,
-    speed = 2.0,
-    bezier = "default",
+	leaf = "layers",
+	enabled = true,
+	speed = 2.0,
+	bezier = "default",
 })
 hl.animation({
-    leaf = "borderangle",
-    enabled = true,
-    speed = 1.0,
-    bezier = "default",
+	leaf = "borderangle",
+	enabled = true,
+	speed = 1.0,
+	bezier = "default",
 })
 hl.animation({
-    leaf = "workspaces",
-    enabled = false,
+	leaf = "workspaces",
+	enabled = false,
 })

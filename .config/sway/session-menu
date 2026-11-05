@@ -1,0 +1,39 @@
+#!/bin/bash
+
+choice=$(printf '%s\n' 'Lock screen' 'Suspend' 'Log out' 'Restart' 'Power off' |
+    fuzzel --dmenu --prompt='Power > ' --lines=5 --width=36 --minimal-lines) || exit 0
+
+confirm_power_action() {
+    choice=$1
+    confirmation=$(printf '%s\n' 'Cancel' 'Confirm' |
+        fuzzel --dmenu --prompt="$choice? > " --lines=2 --width=36 --minimal-lines) || return 1
+    [[ $confirmation == Confirm ]]
+}
+
+case $choice in
+    'Lock screen')
+        if [[ -n ${HYPRLAND_INSTANCE_SIGNATURE:-} ]]; then
+            hyprlock
+        else
+            swaylock -f --screenshots --effect-blur 7x5
+        fi
+        ;;
+    Suspend) systemctl suspend ;;
+    'Log out')
+        if [[ -n ${HYPRLAND_INSTANCE_SIGNATURE:-} ]]; then
+            hyprctl dispatch exit
+        else
+            swaymsg exit
+        fi
+        ;;
+    Restart)
+        if confirm_power_action Restart; then
+            systemctl reboot
+        fi
+        ;;
+    'Power off')
+        if confirm_power_action 'Power off'; then
+            systemctl poweroff
+        fi
+        ;;
+esac

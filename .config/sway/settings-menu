@@ -1,0 +1,173 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+readonly SWAY_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/sway"
+readonly CAFFEINE="$SWAY_CONFIG_DIR/caffeine"
+readonly SESSION_MENU="$SWAY_CONFIG_DIR/session-menu"
+
+notify() {
+    if command -v notify-send >/dev/null 2>&1; then
+        notify-send --app-name='Sway Settings' "$1" "$2" ||
+            printf '%s: %s\n' "$1" "$2" >&2
+    else
+        printf '%s: %s\n' "$1" "$2" >&2
+    fi
+}
+
+run_action() {
+    local label=$1
+    shift
+    local output
+    if output=$("$@" 2>&1); then
+        notify 'Sway Settings' "$label"
+    else
+        local status=$?
+        notify 'Sway Settings — failed' "${output:-$label failed (exit $status)}"
+        return "$status"
+    fi
+}
+
+choose() {
+    local prompt=$1
+    shift
+    printf '%s\n' "$@" |
+        fuzzel --dmenu --prompt="$prompt" --lines="$#" --width=48 --minimal-lines
+}
+
+audio_outputs() {
+    wpctl status 2>/dev/null |
+        sed -n '/Sinks:/,/Sources:/p' |
+        sed -nE 's/.*[[:space:]]([0-9]+)\. (.*) \[vol:.*$/\1\t\2/p'
+}
+
+while true; do
+    wifi_state=$(nmcli -t -f WIFI radio 2>/dev/null || printf 'unknown')
+    case $wifi_state in
+        enabled) wifi_label='Wi-Fi: on (toggle)' ;;
+        disabled) wifi_label='Wi-Fi: off (toggle)' ;;
+        *) wifi_label='Wi-Fi: unavailable' ;;
+    esac
+
+    bluetooth_state=$(bluetoothctl show 2>/dev/null |
+        awk -F ': ' '/Powered:/ { print $2; exit }' || true)
+    case $bluetooth_state in
+        yes) bluetooth_label='Bluetooth: on (toggle)' ;;
+        no) bluetooth_label='Bluetooth: off (toggle)' ;;
+        *) bluetooth_label='Bluetooth: unavailable' ;;
+    esac
+
+    power_profile=$(powerprofilesctl get 2>/dev/null || printf 'unavailable')
+    caffeine_state=$("$CAFFEINE" status)
+    nightlight_state=on
+    if [[ -e ${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/sway-gammastep-off ]]; then
+        nightlight_state=off
+    fi
+
+    choice=$(choose 'Quick settings > ' \
+        "$wifi_label" \
+        'Wi-Fi networks…' \
+        "$bluetooth_label" \
+        'Bluetooth devices…' \
+        'Audio output…' \
+        "Power profile: $power_profile…" \
+        "Keep screen on: $caffeine_state (toggle)" \
+        "Night light: $nightlight_state (toggle)" \
+        'Display settings…' \
+        'Wallpaper…' \
+        'Session and power…') || exit 0
+
+    case $choice in
+        'Wi-Fi: on (toggle)')
+            run_action 'Wi-Fi turned off' nmcli radio wifi off
+            ;;
+        'Wi-Fi: off (toggle)')
+            run_action 'Wi-Fi turned on' nmcli radio wifi on
+            ;;
+        'Wi-Fi: unavailable')
+            notify 'Wi-Fi unavailable' 'NetworkManager could not report Wi-Fi radio state.'
+            ;;
+        'Wi-Fi networks…')
+            exec nmrs
+            ;;
+        'Bluetooth: on (toggle)')
+            run_action 'Bluetooth turned off' bluetoothctl power off
+            ;;
+        'Bluetooth: off (toggle)')
+            run_action 'Bluetooth turned on' bluetoothctl power on
+            ;;
+        'Bluetooth: unavailable')
+            notify 'Bluetooth unavailable' 'No Bluetooth controller state is available.'
+            ;;
+        'Bluetooth devices…')
+            exec blueman-manager
+            ;;
+        'Audio output…')
+            if ! command -v wpctl >/dev/null 2>&1; then
+                notify 'Audio unavailable' 'wpctl is not installed.'
+                continue
+            fi
+            mapfile -t audio_sinks < <(audio_outputs)
+            if ((${#audio_sinks[@]} == 0)); then
+                notify 'Audio unavailable' 'No audio output devices were found.'
+                continue
+            fi
+            sink_labels=()
+            sink_ids=()
+            for sink in "${audio_sinks[@]}"; do
+                sink_ids+=("${sink%%$'\t'*}")
+                sink_labels+=("${sink#*$'\t'}")
+            done
+            if selected_sink=$(choose 'Audio output > ' "${sink_labels[@]}"); then
+                for index in "${!sink_labels[@]}"; do
+                    if [[ ${sink_labels[index]} == "$selected_sink" ]]; then
+                        run_action "Audio output set to $selected_sink" \
+                            wpctl set-default "${sink_ids[index]}"
+                        break
+                    fi
+                done
+            fi
+            ;;
+        'Power profile: '*)
+            if profiles_output=$(powerprofilesctl list 2>&1); then
+                mapfile -t profiles < <(
+                    sed -nE 's/^[[:space:]]*\*?[[:space:]]*([[:alnum:]-]+):$/\1/p' <<< "$profiles_output"
+                )
+            else
+                notify 'Power profiles unavailable' "$profiles_output"
+                continue
+            fi
+            if ((${#profiles[@]} == 0)); then
+                notify 'Power profiles unavailable' 'No profiles were reported by power-profiles-daemon.'
+                continue
+            fi
+            if selected_profile=$(choose "Power profile ($power_profile) > " "${profiles[@]}"); then
+                run_action "Power profile set to $selected_profile" \
+                    powerprofilesctl set "$selected_profile"
+            fi
+            ;;
+        'Keep screen on: off (toggle)')
+            run_action 'Keep screen on enabled' "$CAFFEINE" on
+            ;;
+        'Keep screen on: on (toggle)')
+            run_action 'Keep screen on disabled' "$CAFFEINE" off
+            ;;
+        'Night light: '*)
+            run_action 'Night light toggled' "$HOME/.config/sway/toggle-gammastep"
+            ;;
+        'Display settings…')
+            exec nwg-displays
+            ;;
+        'Wallpaper…')
+            wallpaper_dir="$HOME/Pictures/Wallpapers"
+            if ! command -v waypaper >/dev/null 2>&1; then
+                notify 'Waypaper unavailable' 'Install waypaper to browse and preview wallpapers.'
+                continue
+            fi
+            exec waypaper --folder "$wallpaper_dir"
+            ;;
+        'Session and power…')
+            exec "$SESSION_MENU"
+            ;;
+    esac
+done
