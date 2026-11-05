@@ -25,7 +25,8 @@ official_packages=(
   gammastep git github-cli ghostty grim helix hyprland hyprlock hyprpolkitagent
   i3status jq kitty lazygit lf mpv nautilus neovim networkmanager noctalia npm
   nwg-displays opencode pipewire pipewire-pulse playerctl ripgrep slurp starship
-  sway swaybg swayidle tmux uwsm wl-clipboard wireplumber xdg-utils zoxide zsh
+  sway swaybg swayidle tmux ttf-jetbrains-mono-nerd uwsm wl-clipboard wireplumber
+  xdg-utils zoxide zsh
 )
 aur_packages=(nvm swaylock-effects-git waypaper)
 
